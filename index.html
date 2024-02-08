@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    
-    <title>Point and click adventure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+
+    <title>point and click adventure</title>
 </head>
+
 <body>
-    
-        <div id="title">
-        <h1 id="title">test</h1>
+    <div id="title">
+        <h1 id="mainTitle"></h1>
+    </div>
+    <div id="gameWindow">
+        <!--Dialog bar-->
+        <div id="dialogBar" class="foreground">
+            <div id="setMainDialog">
+                <div id="mainCharacterSpeech" class="foreground"></div>
+
+                <div id="counterSpeech" class="foreground"></div>
+                <div id="brownBar"></div>
+            </div>
         </div>
 
-        <div id="gameWindow">
-        <div id="dialogueBar" class="foreground">
-        <div id="mainCharacterSpeech" class="foreground"></div>
-
-        <div id="counterSpeech" class="foreground"></div>
-
-        <div id="setMainDialogue"></div>
-
-
-        
-
-        <div id="inventory">
+        <!-- Inventory -->
+        <div id="inventoryBox" class="foreground">
+            <p>Inventory</p>
+            <ul id="inventoryList">
+            </ul>
         </div>
 
+        <!-- Interactable things -->
+        <div id="door1" class="Foreground"></div>
+        <div id="sign1" class="Foreground"></div>
+
+        <!-- Main Character -->
+        <div id="mainCharacterId" class="mainCharacter">
+
+        </div>
+
+        <!-- Background -->
+        <div id="tilemap" class="background">
+            <img src="assets/Images/map/tilemap1.jpg" draggable="false" alt="Map level 1">
+        </div>
+
+    </div>
+    <script src="js/main.js"></script>
 </body>
-
-<script src="js/main.js"></script>
 
 </html>
