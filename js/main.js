@@ -6,7 +6,7 @@ document.getElementById("mainTitle").innerText = "Point and Click adventure";
 
 // Game window refrence
 const gameWindow = document.getElementById("gameWindow");
-const state = { inCutscene: false };
+const state = { inCutscene: false, talkedWithStatue: false };
 
 //Game state
 gameState = {
@@ -41,7 +41,9 @@ gameWindow.onclick = function (e) {
                     if (document.getElementById("inv-key") !== null) {
                         gameState.door1locked = false;
                         changeInventory('key', 'delete');
-                        console.log('Door unlocked!');
+                        setTimeout(function () { state.inCutscene = true; }, 0)
+                        setTimeout(showMessage, 0, "mainCharacterSpeech", "The door is now unlocked jeej!");
+                        setTimeout(function () { state.inCutscene = false; }, 3000)
                         revealEverything();
                         door1.style.opacity = 0;
                     } else {
@@ -60,28 +62,37 @@ gameWindow.onclick = function (e) {
                 revealEverything();
                 key1.style.opacity = 0;
                 if (document.getElementById("key1") !== null) {
-                    alert('You found a brown key!')
+                    setTimeout(function () { state.inCutscene = true; }, 0)
+                    setTimeout(showMessage, 0, "mainCharacterSpeech", "Hey a brown key!");
+                    setTimeout(function () { state.inCutscene = false; }, 3000)
                     document.getElementById("key1").remove();
                     changeInventory('key', 'add');
                 }
                 break;
             case "statue1":
-                setTimeout(function () { state.inCutscene = true; }, 0)
-                statue1.style.opacity = 0;
-                setTimeout(function () { counterAvatar.style.opacity = 1; }, 2000)
-                setTimeout(showMessage, 0, "mainCharacterSpeech", "Oh wow what a nice statue");
-                setTimeout(showMessage, 3000, "counterSpeech", "Hello player");
-                setTimeout(showMessage, 6000, "counterSpeech", "Is there something you want to ask?");
-                setTimeout(showMessage, 9000, "mainCharacterSpeech", "Wait you can talk!?");
-                setTimeout(showMessage, 12000, "counterSpeech", "Yes my dear friend");
-                setTimeout(showMessage, 15000, "counterSpeech", "So do you have a question for me?");
-                setTimeout(showMessage, 19000, "mainCharacterSpeech", "Yes do you know how I can go into that house over there?");
-                setTimeout(showMessage, 22000, "counterSpeech", "Hmm...");
-                setTimeout(showMessage, 27000, "counterSpeech", "I think there was a person that hide a key by that old well");
-                setTimeout(showMessage, 30000, "mainCharacterSpeech", "Thank you!");
-                setTimeout(showMessage, 33000, "counterSpeech", "No problem");
-                setTimeout(function () { counterAvatar.style.opacity = 0; }, 36000)
-                setTimeout(function () { state.inCutscene = false; }, 36000)
+                if (state.talkedWithStatue === false) {
+                    setTimeout(function () { state.inCutscene = true; }, 0)
+                    setTimeout(function () { state.talkedWithStatue = true; }, 0)
+                    statue1.style.opacity = 0;
+                    setTimeout(function () { counterAvatar.style.opacity = 1; }, 2000)
+                    setTimeout(showMessage, 0, "mainCharacterSpeech", "Oh wow what a nice statue");
+                    setTimeout(showMessage, 3000, "counterSpeech", "Hello player");
+                    setTimeout(showMessage, 6000, "counterSpeech", "Is there something you want to ask?");
+                    setTimeout(showMessage, 9000, "mainCharacterSpeech", "Wait you can talk!?");
+                    setTimeout(showMessage, 12000, "counterSpeech", "Yes my dear friend");
+                    setTimeout(showMessage, 15000, "counterSpeech", "So do you have a question for me?");
+                    setTimeout(showMessage, 19000, "mainCharacterSpeech", "Yes do you know how I can go into that house over there?");
+                    setTimeout(showMessage, 22000, "counterSpeech", "Hmm...");
+                    setTimeout(showMessage, 27000, "counterSpeech", "I think there was a person that hide a key by that old well");
+                    setTimeout(showMessage, 30000, "mainCharacterSpeech", "Thank you!");
+                    setTimeout(showMessage, 33000, "counterSpeech", "No problem");
+                    setTimeout(function () { counterAvatar.style.opacity = 0; }, 36000)
+                    setTimeout(function () { state.inCutscene = false; }, 36000)
+                } else {
+                    setTimeout(function () { state.inCutscene = true; }, 0)
+                    setTimeout(showMessage, 0, "mainCharacterSpeech", "I already talked with the statue");
+                    setTimeout(function () { state.inCutscene = false; }, 3000)
+                }
                 break;
             default:
                 revealEverything();
@@ -157,4 +168,4 @@ function showMessage(targetBalloon, message) {
 
 function hideMessage(targetBalloon) {
     document.getElementById(targetBalloon).style.opacity = "0";
-}
+}   
