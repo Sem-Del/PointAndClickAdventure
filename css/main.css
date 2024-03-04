@@ -28,8 +28,7 @@ p {
     height: 608px;
     grid-column-start: 2;
     grid-row-start: 2;
-
-    background-color: rgb(31, 216, 230);
+    background-color: rgb(59, 56, 56);
 }
 
 /* Inventory */
@@ -50,37 +49,50 @@ p {
 
 /* Iteractable things */
 #door1 {
-    width: 32px;
-    height: 50px;
-
+    width: 44px;
+    height: 38px;
     opacity: 1;
-    top: 302px;
-    left: 177px;
+    top: 412px;
+    left: 244px;
+}
+
+#door2 {
+    width: 34px;
+    height: 53px;
     opacity: 0;
+    top: 127px;
+    left: 400px;
 }
 
 #sign1 {
-    width: 20px;
-    height: 30px;
-    background-color: rgb(21, 255, 0);
-    top: 500px;
-    left: 600px;
+    width: 18px;
+    height: 18px;
+    opacity: 1;
+    top: 160px;
+    left: 242px;
 }
 
 #key1 {
-    width: 45px;
-    height: 36px;
+    width: 34px;
+    height: 22px;
     opacity: 1;
-    top: 109px;
-    left: 298px;
+    top: 174px;
+    left: 447px;
 }
 
 #statue1 {
-    width: 32px;
-    height: 70px;
+    width: 20px;
+    height: 38px;
     opacity: 1;
-    top: 280px;
-    left: 704px;
+    top: 524px;
+    left: 398px;
+}
+
+#insideHouse1 {
+    width: 800px;
+    height: 608px;
+    top: 0px;
+    left: 0px;
 }
 
 /* Dialog */
@@ -107,7 +119,12 @@ p {
     top: 0px;
 }
 
-#counterSpeech {
+#counterSpeechStatue {
+    right: 72px;
+    top: 0px;
+}
+
+#counterSpeechMagnifyingGlass {
     right: 72px;
     top: 0px;
 }
@@ -116,14 +133,23 @@ p {
     left: 0px;
     bottom: 0px;
     width: 72px;
-    height: 68px;
+    height: 80px;
 }
 
-#counterAvatar {
+#counterAvatarStatue {
     right: 0px;
     bottom: 0px;
-    width: 72px;
-    height: 68px;
+    width: 90px;
+    height: 70px;
+    opacity: 0;
+}
+
+#counterAvatarMagnifyingGlass {
+    right: 0px;
+    bottom: 0px;
+    width: 90px;
+    background-color: #502203;
+    height: 70px;
     opacity: 0;
 }
 
@@ -136,7 +162,7 @@ p {
 
 /* Background */
 
-#tilemap {
+#map1 {
     width: 800px;
     height: 608px;
     top: 0px;
@@ -159,6 +185,14 @@ p {
 .background {
     position: absolute;
     z-index: 0;
+    top: auto;
+    left: auto;
+}
+
+.houseInside {
+    position: absolute;
+    z-index: 0;
+    opacity: 0;
     top: auto;
     left: auto;
 }
