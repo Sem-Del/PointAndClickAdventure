@@ -88,6 +88,30 @@ p {
     left: 398px;
 }
 
+#duck {
+    width: 16px;
+    height: 17px;
+    opacity: 0;
+    top: 372px;
+    left: 496px;
+}
+
+#tent {
+    width: 45px;
+    height: 38px;
+    opacity: 1;
+    top: 203px;
+    left: 642px;
+}
+
+#telescope {
+    width: 27px;
+    height: 40px;
+    opacity: 1;
+    top: 441px;
+    left: 672px;
+}
+
 #insideHouse1 {
     width: 800px;
     height: 608px;
@@ -124,6 +148,11 @@ p {
     top: 0px;
 }
 
+#counterSpeechTentGuard {
+    right: 72px;
+    top: 0px;
+}
+
 #counterSpeechMagnifyingGlass {
     right: 72px;
     top: 0px;
@@ -137,6 +166,14 @@ p {
 }
 
 #counterAvatarStatue {
+    right: 0px;
+    bottom: 0px;
+    width: 90px;
+    height: 70px;
+    opacity: 0;
+}
+
+#counterAvatarTentGuard {
     right: 0px;
     bottom: 0px;
     width: 90px;

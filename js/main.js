@@ -1,12 +1,14 @@
 // Pop-up
-//alert('You started the game have fun!');
+//alert('Welcome to the world!');
+//alert('You got the quest to need to go in the tent.');
+//alert('But...');
 
 // Change Title
 document.getElementById("mainTitle").innerText = "Point and Click adventure";
 
 // Game window refrence
 const gameWindow = document.getElementById("gameWindow");
-const state = { inCutscene: false, talkedWithStatue: false };
+const state = { inCutscene: false, talkedWithStatueFirst: false, gotDuck: false, talkedWithStatueSecond: false };
 
 //Game state
 gameState = {
@@ -23,6 +25,9 @@ const offsetCharacter = 32;
 const door1 = document.getElementById("door1");
 const door2 = document.getElementById("door2");
 const sign1 = document.getElementById("sign1");
+const duck = document.getElementById("duck");
+const tent = document.getElementById("tent");
+const telescope = document.getElementById("telescope");
 const houseInside1 = document.getElementById("insideHouse1");
 const map1 = document.getElementById("map1");
 
@@ -63,13 +68,12 @@ gameWindow.onclick = function (e) {
                     houseInside1.style.opacity = 1;
                     map1.style.opacity = 0;
                     door2.style.opcacity = 1;
+                    if (gameState.gotDuck == false) {
+                        duck.style.opcacity = 1;
+                    } else { duck.style.opcacity = 0; }
                     mainCharacter.style.left = "408px";
                     mainCharacter.style.top = "165px";
                 }
-            case "sign1":
-                revealEverything();
-                e.target.style.opacity = 1;
-                break;
             case "key1":
                 revealEverything();
                 key1.style.opacity = 0;
@@ -82,9 +86,10 @@ gameWindow.onclick = function (e) {
                 }
                 break;
             case "statue1":
-                if (state.talkedWithStatue === false) {
+                if (state.talkedWithStatueFirst === false) {
+                    state.talkedWithStatueFirst = true;
                     setTimeout(function () { state.inCutscene = true; }, 0)
-                    setTimeout(function () { state.talkedWithStatue = true; }, 0)
+                    setTimeout(function () { state.talkedWithStatueSecond = true; }, 0)
                     statue1.style.opacity = 0;
                     setTimeout(function () { counterAvatarStatue.style.opacity = 1; }, 2000)
                     setTimeout(showMessage, 0, "mainCharacterSpeech", "Oh wow what a nice statue");
@@ -93,13 +98,29 @@ gameWindow.onclick = function (e) {
                     setTimeout(showMessage, 9000, "mainCharacterSpeech", "Wait you can talk!?");
                     setTimeout(showMessage, 12000, "counterSpeechStatue", "Yes my dear friend");
                     setTimeout(showMessage, 15000, "counterSpeechStatue", "So do you have a question for me?");
-                    setTimeout(showMessage, 19000, "mainCharacterSpeech", "Yes do you know how I can get in that building at the top left of here?");
+                    setTimeout(showMessage, 19000, "mainCharacterSpeech", "Yes do you know how I can get a duck?");
                     setTimeout(showMessage, 22000, "counterSpeechStatue", "Hmm...");
-                    setTimeout(showMessage, 27000, "counterSpeechStatue", "I think there was a person that hide a key by that tree trunk");
+                    setTimeout(showMessage, 27000, "counterSpeechStatue", "I think you can find more info by the telescope.");
                     setTimeout(showMessage, 30000, "mainCharacterSpeech", "Thank you!");
-                    setTimeout(showMessage, 33000, "counterSpeechStatue", "No problem");
+                    setTimeout(showMessage, 33000, "counterSpeechStatue", "No problem.");
                     setTimeout(function () { counterAvatarStatue.style.opacity = 0; }, 36000)
                     setTimeout(function () { state.inCutscene = false; }, 36000)
+                }
+                else if (state.talkedWithStatueSecond === false) {
+                    setTimeout(function () { state.inCutscene = true; }, 0)
+                    setTimeout(function () { state.talkedWithStatueSecond = true; }, 0)
+                    statue1.style.opacity = 0;
+                    setTimeout(function () { counterAvatarStatue.style.opacity = 1; }, 2000)
+                    setTimeout(showMessage, 0, "mainCharacterSpeech", "Hey I am back!");
+                    setTimeout(showMessage, 3000, "counterSpeechStatue", "Hello player");
+                    setTimeout(showMessage, 6000, "counterSpeechStatue", "Is there something you want to ask?");
+                    setTimeout(showMessage, 9000, "mainCharacterSpeech", "Yes do you know how I can get in that building at the top left of here?");
+                    setTimeout(showMessage, 12000, "counterSpeechStatue", "Hmm...");
+                    setTimeout(showMessage, 15000, "counterSpeechStatue", "I think there was a person that hide a key by that tree trunk");
+                    setTimeout(showMessage, 18000, "mainCharacterSpeech", "Thank you!");
+                    setTimeout(showMessage, 21000, "counterSpeechStatue", "No problem");
+                    setTimeout(function () { counterAvatarStatue.style.opacity = 0; }, 24000)
+                    setTimeout(function () { state.inCutscene = false; }, 24000)
                 } else {
                     setTimeout(function () { state.inCutscene = true; }, 0)
                     setTimeout(showMessage, 0, "mainCharacterSpeech", "I already talked with the statue");
@@ -113,6 +134,49 @@ gameWindow.onclick = function (e) {
                 door2.style.opcacity = 0;
                 mainCharacter.style.left = "261px";
                 mainCharacter.style.top = "439px";
+                break;
+            case "duck":
+                duck.style.opcacity = 0;
+                changeInventory('Duck', 'add');
+                state.gotDuck = true;
+                setTimeout(function () { state.inCutscene = true; }, 0)
+                setTimeout(showMessage, 0, "mainCharacterSpeech", "Oh, a duck!");
+                setTimeout(function () { state.inCutscene = false; }, 3000)
+                break;
+            case "telescope":
+                if (state.talkedWithStatueFirst === true) {
+                    setTimeout(function () { state.inCutscene = true; }, 0)
+                    setTimeout(function () { counterAvatarMagnifyingGlass.style.opacity = 1; }, 2000)
+                    setTimeout(showMessage, 0, "mainCharacterSpeech", "Alright lets look into this thing.");
+                    setTimeout(showMessage, 3000, "counterSpeechMagnifyingGlass", "test");
+                    setTimeout(function () { state.inCutscene = false; }, 6000)
+                } else { }
+                break;
+            case "tent":
+                if (state.gotDuck === true) {
+                    setTimeout(function () { state.inCutscene = true; }, 0)
+                    tent.style.opacity = 0;
+                    counterAvatarTentGuard.style.opacity = 1;
+                    setTimeout(showMessage, 0, "counterSpeechTentGuard", "Hello what do you want?");
+                    setTimeout(showMessage, 3000, "mainCharacterSpeech", "I am here for the trial");
+                    setTimeout(showMessage, 6000, "counterSpeechTentGuard", "Show the duck.");
+                    setTimeout(showMessage, 9000, "mainCharacterSpeech", "Here you go.");
+                    setTimeout(showMessage, 12000, "counterSpeechTentGuard", "Hm... alright welcome in!");
+                    setTimeout(function () { counterAvatarTentGuard.style.opacity = 0; }, 15000)
+                    setTimeout(function () { state.inCutscene = false; }, 15000)
+                    setTimeout(function () { alert('You completed the game well done!'); }, 15000)
+                } else {
+                    setTimeout(function () { state.inCutscene = true; }, 0)
+                    tent.style.opacity = 0;
+                    counterAvatarTentGuard.style.opacity = 1;
+                    setTimeout(showMessage, 0, "counterSpeechTentGuard", "Hello what do you want?");
+                    setTimeout(showMessage, 3000, "mainCharacterSpeech", "I am here for the trial");
+                    setTimeout(showMessage, 6000, "counterSpeechTentGuard", "Show the duck.");
+                    setTimeout(showMessage, 9000, "mainCharacterSpeech", "I dont have one.");
+                    setTimeout(showMessage, 12000, "counterSpeechTentGuard", "Then get one!");
+                    setTimeout(function () { counterAvatarTentGuard.style.opacity = 0; }, 15000)
+                    setTimeout(function () { state.inCutscene = false; }, 15000)
+                }
                 break;
             default:
                 revealEverything();
