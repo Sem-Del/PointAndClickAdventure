@@ -45,6 +45,31 @@ p {
     padding: 10px;
 }
 
+/* Explosions */
+
+#explosion {
+    width: 250px;
+    height: 250px;
+    opacity: 0;
+    top: 60px;
+    left: 400px;
+}
+
+#explosion2 {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    top: 350px;
+    left: 500px;
+}
+
+#explosion3 {
+    top: 200px;
+    left: 100px;
+    opacity: 0;
+    width: 400px;
+    height: 400px;
+}
 
 
 /* Iteractable things */
@@ -75,7 +100,7 @@ p {
 #key1 {
     width: 34px;
     height: 22px;
-    opacity: 1;
+    opacity: 0;
     top: 174px;
     left: 447px;
 }
@@ -202,6 +227,14 @@ p {
 #map1 {
     width: 800px;
     height: 608px;
+    top: 0px;
+    left: 0px;
+}
+
+#space {
+    width: 800px;
+    height: 608px;
+    opacity: 0;
     top: 0px;
     left: 0px;
 }
