@@ -1,7 +1,6 @@
 // Pop-up
 alert('Welcome to the world!');
 alert('You have a quest, go to the tent to find out more.');
-alert('But...');
 
 // Change Title
 document.getElementById("mainTitle").innerText = "Point and Click adventure";
@@ -46,7 +45,7 @@ gameWindow.onclick = function (e) {
 
         switch (e.target.id) {
             case "door1":
-                if (gameState.door1locked == true) {
+                if (gameState.door1locked === true) {
                     if (document.getElementById("inv-key") !== null) {
                         gameState.door1locked = false;
                         changeInventory('key', 'delete');
@@ -76,13 +75,15 @@ gameWindow.onclick = function (e) {
                     mainCharacter.style.top = "165px";
                 }
             case "key1":
-                key1.style.opacity = 0;
-                if (document.getElementById("key1") !== null) {
-                    setTimeout(function () { state.inCutscene = true; }, 0)
-                    setTimeout(showMessage, 0, "mainCharacterSpeech", "Hey a brown key!");
-                    setTimeout(function () { state.inCutscene = false; }, 3000)
-                    document.getElementById("key1").remove();
-                    changeInventory('key', 'add');
+                if (hasTalkedSecondTime == true) {
+                    key1.style.opacity = 0;
+                    if (document.getElementById("key1") !== null) {
+                        setTimeout(function () { state.inCutscene = true; }, 0)
+                        setTimeout(showMessage, 0, "mainCharacterSpeech", "Hey a brown key!");
+                        setTimeout(function () { state.inCutscene = false; }, 3000)
+                        document.getElementById("key1").remove();
+                        changeInventory('key', 'add');
+                    }
                 }
                 break;
             case "statue1":
