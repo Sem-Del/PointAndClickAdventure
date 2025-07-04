@@ -122,6 +122,7 @@ gameWindow.onclick = function (e) {
                     setTimeout(showMessage, 18000, "mainCharacterSpeech", "Thank you!");
                     setTimeout(showMessage, 21000, "counterSpeechStatue", "No problem.");
                     setTimeout(function () { counterAvatarStatue.style.opacity = 0; }, 24000)
+                    setTimeout(function () { hasTalkedSecondTime = true; }, 24000)
                     setTimeout(function () { state.inCutscene = false; }, 24000)
                 } else if (state.talkedWithStatueFirst === true) {
                     setTimeout(function () { state.inCutscene = true; }, 0)
